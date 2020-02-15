@@ -27,6 +27,13 @@ const compressionConfig = {
   minRatio: 0.9
 }
 
+// SVGO config (compat with mPDF)
+const imageMinPlugins = !inProduction ? [] : [
+  require('imagemin-mozjpeg')({}),
+  require('imagemin-optipng')({}),
+  require('imagemin-svgo')({})
+]
+
 module.exports = {
   // Set mode and source maps
   mode: inProduction ? 'production' : 'development',
@@ -106,7 +113,12 @@ module.exports = {
               outputPath: 'images'
             }
           },
-          { loader: 'img-loader' }
+          {
+            loader: 'img-loader',
+            options: {
+              plugins: imageMinPlugins
+            }
+          }
         ]
       }
     ]
