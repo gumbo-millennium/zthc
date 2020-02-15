@@ -2,6 +2,7 @@ const path = require('path')
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const HardSourcePlugin = require('hard-source-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -11,6 +12,7 @@ const webpack = require('webpack')
 const inProduction = process.env.NODE_ENV === 'production'
 const inLiveBuild = process.env.NODE_SCOPE === 'live'
 const publicDir = path.resolve(__dirname, 'dist')
+const imagesPath = path.join(__dirname, 'lib/images')
 
 // Add hash if in production
 const withHash = name => (inProduction ? name.replace(/^.+\.(\[[a-z]+\]|[a-z]+)$/, '[contenthash:16].$1') : name)
@@ -162,6 +164,24 @@ module.exports = {
       inject: 'head',
     }),
 
+    // Create favicon
+    new FaviconsWebpackPlugin({
+      logo: path.join(imagesPath, 'favicon.png'),
+      prefix: '',
+      favicons: {
+        icons: {
+          android: false,
+          appleIcon: false,
+          appleStartup: false,
+          coast: false,
+          favicons: true,
+          firefox: false,
+          windows: false,
+          yandex: false
+        }
+      }
+    }),
+
     // Brotli compression
     new CompressionPlugin({
       ...compressionConfig,
@@ -187,7 +207,7 @@ module.exports = {
   // Aliasses
   resolve: {
     alias: {
-      images: path.join(__dirname, 'lib/images')
+      images: imagesPath
     }
   }
 }
