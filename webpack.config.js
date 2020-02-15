@@ -9,6 +9,7 @@ const webpack = require('webpack')
 
 // Locally used variables
 const inProduction = process.env.NODE_ENV === 'production'
+const inLiveBuild = process.env.NODE_SCOPE === 'live'
 const publicDir = path.resolve(__dirname, 'dist')
 
 // Add hash if in production
@@ -51,8 +52,14 @@ module.exports = {
   // Context and entry file
   entry: ['./src/app.js', './src/css/app.css'],
   output: {
+    // Output in dist/
     path: publicDir,
-    filename: withHash('bundle.js')
+
+    // Save as bundle on dev
+    filename: withHash('bundle.js'),
+
+    // Configure live URL if required
+    publicPath: inLiveBuild ? 'https://zthc.nl/' : ''
   },
 
   // Various optimizations
@@ -96,7 +103,8 @@ module.exports = {
           {
             loader: 'html-loader',
             options: {
-              interpolate: true
+              interpolate: true,
+              minimize: inProduction
             }
           }
         ]

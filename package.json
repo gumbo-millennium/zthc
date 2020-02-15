@@ -51,6 +51,7 @@
     "run-webpack": "webpack --progress --hide-modules",
     "start": "NODE_ENV=development webpack-dev-server --open",
     "dev": "NODE_ENV=development yarn run-webpack",
-    "build": "NODE_ENV=production yarn run-webpack"
+    "build": "NODE_ENV=production yarn run-webpack",
+    "build-deploy": "NODE_SCOPE=live yarn build"
   }
 }
