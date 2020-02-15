@@ -1,0 +1,35 @@
+body {
+  @apply bg-gray-900 text-white overflow-hidden h-full;
+}
+
+.canvas, .main {
+  @apply w-full;
+  @apply relative;
+  height: 100vh;
+}
+
+.canvas {
+  @apply z-0;
+}
+
+.main {
+  @apply z-10;
+  @apply flex flex-col justify-start items-stretch;
+  top: -100vh;
+}
+
+.main-logo, .tease-logo {
+  @apply flex text-center items-center justify-center;
+}
+
+.main-logo {
+  @apply flex-grow;
+}
+
+.tease-logo {
+  @apply flex-none;
+}
+
+.tease-logo__logo {
+  @apply h-8 mb-4;
+}

@@ -1,0 +1,16 @@
+{
+    "extends": [
+        "standard"
+    ],
+    "env": {
+        "browser": true,
+        "jquery": true,
+        "jasmine": true
+    },
+    "rules": {
+        "no-prototype-builtins": "off"
+    },
+    "ignorePatterns": [
+        "/test/jasmine"
+    ]
+}
