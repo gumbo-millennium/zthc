@@ -16,7 +16,7 @@
         # client accepts brotli.
         RewriteCond "%{HTTP:Accept-encoding}" "br"
         RewriteCond "%{REQUEST_FILENAME}\.br" "-s"
-        RewriteRule "^(.*)\.(js|css|svg)"     "$1\.$2\.br" [QSA]
+        RewriteRule "^(.*)\.(js|css|svg|html)"     "$1\.$2\.br" [QSA]
 
         # Serve correct content types, and prevent double compression.
         SetEnvIf Request_URI \.(?:js|css|svg|html)\.br$ no-brotli
