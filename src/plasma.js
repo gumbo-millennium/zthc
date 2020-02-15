@@ -160,12 +160,11 @@ export class Plasma {
     this._running = false
     this._dimensions = [window.innerWidth, window.innerHeight]
     this._lastFrame = Date.now()
+    this._nextFactor = 1
 
     // Bind to resize
-    const listener = document.addEventListener('resize', debounce(this.resize, 150, true), { passive: true })
+    window.addEventListener('resize', debounce(() => this.resize(), 150), { passive: true })
     this.resize()
-
-    this._listeners = [].push(listener)
   }
 
   resize () {
@@ -197,8 +196,11 @@ export class Plasma {
     // Get frame time
     const frameTime = new Date()
 
+    // Scale according to device framerate
+    const scale = Math.floor(this.config.CycleSpeed * this._nextFactor)
+    const paletteOffset = (this._paletteOffset += scale)
+
     // Render effect
-    const paletteOffset = (this._paletteOffset += this.config.CycleSpeed)
     drawEffect(this.canvas, this.config, this.palettes, paletteOffset)
 
     // Render FPS
@@ -206,6 +208,10 @@ export class Plasma {
       drawFps(this.canvas, frameTime - this._lastFrame)
     }
 
+    // Determine scale using framerate
+    this._nextFactor = 1 + Math.max(0, (frameTime - this._lastFrame) / 300)
+
+    // Store time
     this._lastFrame = new Date()
 
     // Schedule next frame

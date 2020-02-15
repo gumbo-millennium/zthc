@@ -9,17 +9,16 @@ import { Plasma } from './plasma'
 const selector = 'canvas[data-content="thc"]'
 
 window.addEventListener('DOMContentLoaded', () => {
+  const windowRatio = window.innerWidth / window.innerHeight
   const plasma = new Plasma(selector, {
     CycleSpeed: 2,
     ShowFPS: process.env.production === false,
-    PlasmaDensity: 92,
+    PlasmaDensity: (windowRatio < 1) ? 48 : 92,
     TimeFunction: 1024,
     PaletteIndex: ~~(Math.random() * 128 % 2) + 2
   })
-  console.log('Created plasma %o, %o', plasma)
 
   plasma.start()
-  console.log('started')
 
   window.plasma = plasma
 })
