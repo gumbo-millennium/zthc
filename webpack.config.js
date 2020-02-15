@@ -12,7 +12,7 @@ const inProduction = process.env.NODE_ENV === 'production'
 const publicDir = path.resolve(__dirname, 'dist')
 
 // Add hash if in production
-const withHash = name => (inProduction ? name.replace(/\.(\[[a-z]+\]|[a-z]+)$/, '.[contenthash:16].$1') : name)
+const withHash = name => (inProduction ? name.replace(/^.+\.(\[[a-z]+\]|[a-z]+)$/, '[contenthash:16].$1') : name)
 
 // Disable imagemin in dev
 const imageConfig = {}
