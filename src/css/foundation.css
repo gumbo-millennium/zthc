@@ -34,9 +34,10 @@ body {
   bottom: theme('spacing.8');
 }
 
-.tease-logo__text {
+.tease-logo__icon {
   @apply mr-4 block;
   @apply text-right text-2xl leading-none;
+  @apply h-6;
 }
 
 .tease-logo__logo {
