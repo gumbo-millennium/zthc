@@ -33,10 +33,10 @@ body {
 }
 
 .tease-logo__text {
-  @apply mr-4 block w-64;
+  @apply mr-4 block;
   @apply text-right text-2xl leading-none;
 }
 
 .tease-logo__logo {
-  @apply h-12 mr-64;
+  @apply h-12;
 }
