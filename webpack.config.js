@@ -86,12 +86,17 @@ module.exports = {
       {
         test: /\.html$/,
         use: [
-          { loader: 'html-loader' }
+          {
+            loader: 'html-loader',
+            options: {
+              interpolate: true
+            }
+          }
         ]
       },
       // Images
       {
-        test: /\.(png|svg)$/,
+        test: /\.(png|svg|jpg)$/,
         use: [
           {
             loader: 'file-loader',
@@ -127,7 +132,7 @@ module.exports = {
 
         // Remove statics
         './*.html',
-        './*.{svg,png}'
+        './*.{svg,png|jpg}'
       ]
     }),
 
