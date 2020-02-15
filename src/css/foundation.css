@@ -27,9 +27,11 @@ body {
 }
 
 .tease-logo {
-  @apply flex-none;
+  @apply absolute w-full;
   @apply flex flex-row items-center justify-center;
-  @apply mb-8;
+
+  left: 0;
+  bottom: theme('spacing.8');
 }
 
 .tease-logo__text {
