@@ -1,0 +1,2 @@
+# Ignore lock file diffs
+yarn.lock binary export-ignore

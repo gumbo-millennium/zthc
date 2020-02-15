@@ -1,0 +1,12 @@
+{
+  "name": "@roelofr/zthc",
+  "version": "0.1.0",
+  "description": "A joke domain name",
+  "main": "src/plasma.js",
+  "repository": "https://github.com/roelofr/zthc",
+  "author": "Roelof Roos <github@roelof.io>",
+  "license": "-",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {}
+}
