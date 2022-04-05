@@ -18,8 +18,9 @@
     "@parcel/compressor-gzip": "^2.4.1",
     "@parcel/validator-eslint": "^2.4.1",
     "autoprefixer": "^10.4.4",
-    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1",
     "parcel": "^2.4.1",
+    "parcel-reporter-clean-dist": "^1.0.4",
     "postcss": "^8.4.12"
   },
   "scripts": {
@@ -28,5 +29,8 @@
   },
   "config": {
     "sortDependencies": true
-  }
+  },
+  "cleanDistFiles": [
+    "!dist/.htaccess"
+  ]
 }
