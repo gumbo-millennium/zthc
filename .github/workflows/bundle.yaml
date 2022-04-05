@@ -7,9 +7,8 @@ on:
   push:
     branches:
       - main
-      - github-actions
     tags:
-      - "v*"
+      - "v*.*.*"
   pull_request:
     branches:
       - main

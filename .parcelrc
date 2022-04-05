@@ -12,5 +12,9 @@
             "@parcel/compressor-gzip",
             "@parcel/compressor-brotli"
         ]
-    }
+    },
+    "reporters": [
+        "...",
+        "parcel-reporter-clean-dist"
+    ]
 }
