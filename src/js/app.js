@@ -4,21 +4,21 @@
  * Modifications by Roelof <https://github.com/roelofr/plasma>
  */
 
-import { Plasma } from './plasma'
+import Plasma from './plasma';
 
-const selector = 'canvas[data-content="thc"]'
+const selector = 'canvas[data-content="thc"]';
 
 window.addEventListener('DOMContentLoaded', () => {
-  const windowRatio = window.innerWidth / window.innerHeight
+  const windowRatio = window.innerWidth / window.innerHeight;
   const plasma = new Plasma(selector, {
     CycleSpeed: 2,
     ShowFPS: process.env.production === false,
     PlasmaDensity: (windowRatio < 1) ? 48 : 92,
     TimeFunction: 1024,
-    PaletteIndex: ~~(Math.random() * 128 % 2) + 2
-  })
+    PaletteIndex: ~~((Math.random() * 128) % 2) + 2,
+  });
 
-  plasma.start()
+  plasma.start();
 
-  window.plasma = plasma
-})
+  window.plasma = plasma;
+});
