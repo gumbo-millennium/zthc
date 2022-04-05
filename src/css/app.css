@@ -1,6 +1,5 @@
 /* Simple styling */
 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import "foundation.css";
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

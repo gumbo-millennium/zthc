@@ -12,12 +12,6 @@ max_line_length = 80
 [*.md]
 trim_trailing_whitespace = false
 
-[*.{js,html,json,css,scss}]
+[*.{js,html,json,css,yaml}]
 indent_style = space
 indent_size = 2
-
-[resources/assets/**.json]
-indent_size = 2
-
-[makefile]
-indent_style = tab

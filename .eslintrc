@@ -1,16 +1,13 @@
 {
-    "extends": [
-        "standard"
-    ],
+    "extends": "airbnb",
     "env": {
-        "browser": true,
-        "jquery": true,
-        "jasmine": true
+        "browser": true
     },
     "rules": {
-        "no-prototype-builtins": "off"
-    },
-    "ignorePatterns": [
-        "/test/jasmine"
-    ]
+        "no-bitwise": "off",
+        "no-plusplus": "off",
+        "no-underscore-dangle": ["error", {
+            "allowAfterThis": true,
+        }],
+    }
 }
