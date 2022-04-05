@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - main
+      - develop
     tags:
       - "v*.*.*"
   pull_request:
@@ -35,18 +36,24 @@ jobs:
     - name: Build application
       run: npm run build
 
-    - name: Package application
-      run: tar -czf bundle.tar.gz --strip-components=1 dist/*
-
     - name: Publish application as artifact
       uses: actions/upload-artifact@v2
       with:
         name: bundle
-        path: bundle.tar.gz
+        path: dist/*
 
-    - name: Publish release with application
+    - name: Package application for release
+      if: startsWith(github.ref, 'refs/tags/')
+      run: |
+        cd dist/
+        tar -czf ../application.tar.gz * .htaccess
+        zip -r ../application.zip * .htaccess
+
+    - name: Publish release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
         draft: true
-        files: bundle.tar.gz
+        files: |
+          application.tar.gz
+          application.zip
